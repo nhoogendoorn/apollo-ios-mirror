@@ -7,7 +7,7 @@
 import PackageDescription
 
 let package = Package(
-  name: "Apollo",
+  name: "Apollo_Legacy",
   platforms: [
     .iOS(.v12),
     .macOS(.v10_14),
@@ -16,21 +16,21 @@ let package = Package(
     .visionOS(.v1),
   ],
   products: [
-    .library(name: "Apollo", targets: ["Apollo"]),
-    .library(name: "ApolloAPI", targets: ["ApolloAPI"]),
-    .library(name: "Apollo-Dynamic", type: .dynamic, targets: ["Apollo"]),
-    .library(name: "ApolloSQLite", targets: ["ApolloSQLite"]),
-    .library(name: "ApolloWebSocket", targets: ["ApolloWebSocket"]),
-    .library(name: "ApolloTestSupport", targets: ["ApolloTestSupport"]),
-    .plugin(name: "InstallCLI", targets: ["Install CLI"])
+    .library(name: "Apollo_Legacy", targets: ["Apollo_Legacy"]),
+    .library(name: "ApolloAPI_Legacy", targets: ["ApolloAPI_Legacy"]),
+    .library(name: "Apollo-Dynamic_Legacy", type: .dynamic, targets: ["Apollo_Legacy"]),
+    .library(name: "ApolloSQLite_Legacy", targets: ["ApolloSQLite_Legacy"]),
+    .library(name: "ApolloWebSocket_Legacy", targets: ["ApolloWebSocket_Legacy"]),
+    .library(name: "ApolloTestSupport_Legacy", targets: ["ApolloTestSupport_Legacy"]),
+    .plugin(name: "InstallCLI_Legacy", targets: ["Install CLI Legacy"])
   ],
   dependencies: [
   ],
   targets: [
     .target(
-      name: "Apollo",
+      name: "Apollo_Legacy",
       dependencies: [
-        "ApolloAPI"
+        "ApolloAPI_Legacy"
       ],
       resources: [
         .copy("Resources/PrivacyInfo.xcprivacy")
@@ -38,7 +38,7 @@ let package = Package(
       swiftSettings: [.enableUpcomingFeature("ExistentialAny")]
     ),
     .target(
-      name: "ApolloAPI",
+      name: "ApolloAPI_Legacy",
       dependencies: [],
       resources: [
         .copy("Resources/PrivacyInfo.xcprivacy")
@@ -46,9 +46,9 @@ let package = Package(
       swiftSettings: [.enableUpcomingFeature("ExistentialAny")]
     ),
     .target(
-      name: "ApolloSQLite",
+      name: "ApolloSQLite_Legacy",
       dependencies: [
-        "Apollo",
+        "Apollo_Legacy",
       ],
       resources: [
         .copy("Resources/PrivacyInfo.xcprivacy")
@@ -56,9 +56,9 @@ let package = Package(
       swiftSettings: [.enableUpcomingFeature("ExistentialAny")]
     ),
     .target(
-      name: "ApolloWebSocket",
+      name: "ApolloWebSocket_Legacy",
       dependencies: [
-        "Apollo"
+        "Apollo_Legacy"
       ],
       resources: [
         .copy("Resources/PrivacyInfo.xcprivacy")
@@ -66,15 +66,15 @@ let package = Package(
       swiftSettings: [.enableUpcomingFeature("ExistentialAny")]
     ),
     .target(
-      name: "ApolloTestSupport",
+      name: "ApolloTestSupport_Legacy",
       dependencies: [
-        "Apollo",
-        "ApolloAPI"
+        "Apollo_Legacy",
+        "ApolloAPI_Legacy"
       ],
       swiftSettings: [.enableUpcomingFeature("ExistentialAny")]
     ),
     .plugin(
-      name: "Install CLI",
+      name: "Install CLI Legacy",
       capability: .command(
         intent: .custom(
           verb: "apollo-cli-install",
@@ -84,7 +84,7 @@ let package = Package(
           .allowNetworkConnections(scope: .all(ports: []), reason: "Downloads the Apollo iOS CLI executable from the GitHub Release.")
         ]),
       dependencies: [],
-      path: "Plugins/InstallCLI"
+      path: "Plugins/InstallCLI_Legacy"
     )
   ]
 )
