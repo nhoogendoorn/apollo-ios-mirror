@@ -18,7 +18,7 @@ let package = Package(
     .library(name: "ApolloSQLite_Legacy", targets: ["ApolloSQLite_Legacy"]),
     .library(name: "ApolloWebSocket_Legacy", targets: ["ApolloWebSocket_Legacy"]),
     .library(name: "ApolloTestSupport_Legacy", targets: ["ApolloTestSupport_Legacy"]),
-    .plugin(name: "InstallCLI_Legacy", targets: ["Install CLI"])
+    .plugin(name: "InstallCLI_Legacy", targets: ["Install CLI Legacy"])
   ],
   dependencies: [],
   targets: [
@@ -79,7 +79,7 @@ let package = Package(
       ]
     ),
     .plugin(
-      name: "Install CLI",
+      name: "Install CLI Legacy",
       capability: .command(
         intent: .custom(
           verb: "apollo-cli-install",
